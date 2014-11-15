@@ -10,9 +10,12 @@
 
       $(document).ready(function(){
         var $body = $('body');
+        var $container = $('<div></div>');
         var garbage;
         var updated = false;
         $body.html('');
+        $container.appendTo($body);
+        $container.text('');
 
         var index = streams.home.length - 1;
         initializeTweet();
@@ -21,7 +24,7 @@
             var tweet = streams.home[index];
             var $tweet = $('<div></div>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($body);
+            $tweet.appendTo($container);
             index -= 1;
           }
                         if(updated == false){
@@ -33,7 +36,7 @@
                         
                         function updateTweet () {
                                    setTimeout(function(){
-                                     $('div').first().remove();
+                                     $container.find('div').first().remove();
                                      garbage = streams.home.pop();
                                      streams.home.unshift(streams.home[streams.home.length-1]);
                                      garbage = [];
@@ -42,7 +45,6 @@
                                      },3000);
                         };
       });
-
     </script>
   </body>
 </html>
