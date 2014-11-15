@@ -9,18 +9,39 @@
 
       $(document).ready(function(){
         var $body = $('body');
-        var garbage = 0;
+        var garbage;
+        var updated = false;
         $body.html('');
 
         var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        initializeTweet();
+        function initializeTweet() {
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($body);
+            index -= 1;
+          }
+                        if(updated == false){
+                        updateTweet();
+                        update = true;
+                        }
 
+        };
+                        //updateTweet();
+                        
+                        function updateTweet () {
+                                   setTimeout(function(){
+                                     $('div').first().remove();
+                                     garbage = streams.home.pop();
+                                     streams.home.unshift(streams.home[streams.home.length-1]);
+                                     garbage = [];
+                                     index += 1;
+                                     initializeTweet();
+                                              update = false;
+                                     },3000);
+                        };
       });
 
     </script>
