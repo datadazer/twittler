@@ -1,19 +1,17 @@
-/*body {
-    position: relative;
-    width: 500px;
-    top: 250px;
-    right: -500px;
-    border: black;
-    border-width: thick;
-    border-style: double;
-};*/
+body {
+    background-image: url("https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfa1/v/t35.0-12/10815526_1012512548764265_576170640_o.jpg?oh=99f3cf80ceae0b79002d793a1c6c332b&oe=546A390A&__gda__=1416259241_e2418e6db23088b0b3c39e6475d78885");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
 
 #container {
     position: relative;
+    background-color: rgb(240, 252, 255);
     width: 500px;
     top: 250px;
     right: -500px;
-    border: blue;
+    border: rgb(123,199,127);
     border-width: thick;
     border-style: double;
 }
