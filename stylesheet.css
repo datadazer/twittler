@@ -6,23 +6,19 @@ body {
 }
 
 #container {
-    position: fixed;
+    position: relative;
     background-color: white;
     width: 500px;
-    top: 50%;
-    left: 50%;
+    left: 35%;
     margin-top: -200px;
-    margin-left: -250px;
     opacity: 0.8;
 }
 #logo {
     background-image: url("images/twittlerlogo.png");
-    background-attachment: fixed;
-    background-position-x: 52%;
-    background-position-y: -50%;
+    background-position-y: 180%;
     background-repeat: no-repeat;
     left: 35%;
     position: relative;
-    width: 2000px;
+    width: 500px;
     height: 400px;
 }
