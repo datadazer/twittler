@@ -11,11 +11,14 @@
       $(document).ready(function(){
         var $body = $('body');
         var $container = $('<div id=\'container\'></div>');
+        var $logo = $('<div id=\'logo\'></div>');
         var garbage;
         var updated = false;
         $body.html('');
+                        $body.prepend($logo);
         $container.appendTo($body);
         $container.text('');
+                        $('#logo').text('');
 
         var index = streams.home.length - 1;
         initializeTweet();
@@ -45,6 +48,7 @@
                                      },3000);
                         };
       });
+      
     </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfa1/v/t35.0-12/10815526_1012512548764265_576170640_o.jpg?oh=99f3cf80ceae0b79002d793a1c6c332b&oe=546A390A&__gda__=1416259241_e2418e6db23088b0b3c39e6475d78885");
+    background-image: url("images/cloudsbg.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -14,4 +14,15 @@ body {
     margin-top: -200px;
     margin-left: -250px;
     opacity: 0.8;
+}
+#logo {
+    background-image: url("images/twittlerlogo.png");
+    background-attachment: fixed;
+    background-position-x: 52%;
+    background-position-y: -50%;
+    background-repeat: no-repeat;
+    left: 35%;
+    position: relative;
+    width: 2000px;
+    height: 400px;
 }
