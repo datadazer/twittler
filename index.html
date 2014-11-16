@@ -12,6 +12,7 @@
         var $body = $('body');
         var $container = $('<div id=\'container\'></div>');
         var $logo = $('<div id=\'logo\'></div>');
+        var currentUsers = ["shawndrost","sharksforcheap","mracus","douglascalhoun"];
         var garbage;
         var updated = false;
         $body.html('');
@@ -19,7 +20,9 @@
         $container.appendTo($body);
         $container.text('');
                         $('#logo').text('');
-
+        var $searchButton = $('<div id="searchButton"><div>');
+                        $searchButton.text("Sort By");
+                        $container.after($searchButton);
         var index = streams.home.length - 1;
         initializeTweet();
         function initializeTweet() {
