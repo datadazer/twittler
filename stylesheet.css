@@ -13,7 +13,5 @@ body {
     left: 50%;
     margin-top: -200px;
     margin-left: -250px;
-    border: rgb(123,199,127);
-    border-width: thick;
-    border-style: double;
+    opacity: 0.8;
 }
