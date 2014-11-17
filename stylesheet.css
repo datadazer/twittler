@@ -63,3 +63,7 @@ li{
     text-align: center;
     color: white;
 }
+li:hover{
+    background-color: rgba(81, 81, 81, 1);
+    cursor: pointer;
+}
