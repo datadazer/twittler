@@ -12,9 +12,10 @@
         var $body = $('body');
         var $container = $('<div id=\'container\'></div>');
         var $logo = $('<div id=\'logo\'></div>');
-        var currentUsers = ["shawndrost","sharksforcheap","mracus","douglascalhoun"];
+        var currentUsers = ["@shawndrost","@sharksforcheap","@mracus","@douglascalhoun"];
         var garbage;
         var updated = false;
+        var $nav = $('<ul id=\'menu\'><li>'+currentUsers[0]+'</li><li>'+currentUsers[1]+'</li><li>'+currentUsers[2]+'</li><li>'+currentUsers[3]+'</li></ul>')
         $body.html('');
                         $body.prepend($logo);
         $container.appendTo($body);
@@ -50,6 +51,18 @@
                                      initializeTweet();
                                      },3000);
                         };
+            /*$searchButton.hover(
+                   function(){
+                   $('#menu').children().slideDown(200);
+                   $searchButton.after($nav);
+                   },
+                   function(){
+                   $('#menu').children().slideUp(200);
+                   });*/
+                        $searchButton.click(function(){
+                                            $('#menu').children().slideToggle();//slideDown(200);
+                                         $searchButton.after($nav);
+                                            });
       });
       
     </script>
