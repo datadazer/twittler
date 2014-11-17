@@ -8,7 +8,6 @@
   </head>
   <body>
     <script>
-
       $(document).ready(function(){
         var $body = $('body');
         var $container = $('<div id=\'container\'></div>');
@@ -18,6 +17,8 @@
         var updated = false;
         var $nav = $('<ul id=\'menu\'><li>'+currentUsers[0]+'</li><li>'+currentUsers[1]+'</li><li>'+currentUsers[2]+'</li><li>'+currentUsers[3]+'</li></ul>')
         var keepUpdating = true;
+        var screenPointer = 0;
+        var screenChoices = [streams.home,streams.users.shawndrost]
         $body.html('');
         $body.prepend($logo);
         $container.appendTo($body);
@@ -30,7 +31,7 @@
         initializeTweet();
         function initializeTweet() {
           while(index >= 0){
-            var tweet = streams.home[index];
+            var tweet = /*streams.home*/screenChoices[screenPointer][index];
             var $tweet = $('<div></div>');
             var $timeStamp = $('<span></span>');
             $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
@@ -39,7 +40,7 @@
             $tweet.appendTo($container);
             index -= 1;
           }
-          if(updated == false && keepUpdating == true){
+          if(updated == false && keepUpdating == true && screenPointer == 0){
             updateTweet();
           }
 
@@ -56,12 +57,12 @@
                                      },3000);
                           };
         if(screenPointer != 0){
-        function screenChange(){
+        function screenChange(pointer){
           keepUpdating = false;
-          index = streams.users.shawndrost.length-1;
+          index = screenChoices[pointer].length-1;
           $container.text('');
           while(index >= 0){
-            var tweet = streams.users.shawndrost[index];
+            var tweet = screenChoices[pointer][index];
             var $tweet = $('<div></div>');
             var $timeStamp = $('<span></span>');
             $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
@@ -72,13 +73,16 @@
           }
                         
         };//end screenChange
-        }
+                        };
                         
                         $searchButton.click(function(){
                                             $('#menu').children().slideToggle();
                                          $searchButton.after($nav);
                                             });
-                        $nav.children().first().click(screenChange());
+                        $nav.children().first().click(function(){
+                                                      screenPointer = 1;
+                                                      screenChange(screenPointer);
+                                                      });
       });
       
     </script>
