@@ -39,11 +39,11 @@
             $tweet.appendTo($container);
             index -= 1;
           }
-                        if(updated == false && keepUpdating == true){
-                        updateTweet();
-                        }
+          if(updated == false && keepUpdating == true){
+            updateTweet();
+          }
 
-        };
+        }; //end initTweet
                           function updateTweet () {
                                    setTimeout(function(){
                                      $container.find('span').first().remove();
@@ -55,27 +55,30 @@
                                      initializeTweet();
                                      },3000);
                           };
+        if(screenPointer != 0){
+        function screenChange(){
+          keepUpdating = false;
+          index = streams.users.shawndrost.length-1;
+          $container.text('');
+          while(index >= 0){
+            var tweet = streams.users.shawndrost[index];
+            var $tweet = $('<div></div>');
+            var $timeStamp = $('<span></span>');
+            $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
+            $timeStamp.appendTo($container);
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($container);
+            index -= 1;
+          }
+                        
+        };//end screenChange
+        }
                         
                         $searchButton.click(function(){
                                             $('#menu').children().slideToggle();
                                          $searchButton.after($nav);
                                             });
-                        $nav.children().first().click(function(){
-                                                      keepUpdating = false;
-                                                      index = streams.users.shawndrost.length-1;
-                                                      $container.text('');
-                                                        while(index >= 0){
-                                                          var tweet = streams.users.shawndrost[index];
-                                                          var $tweet = $('<div></div>');
-                                                          var $timeStamp = $('<span></span>');
-                                                          $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
-                                                          $timeStamp.appendTo($container);
-                                                          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-                                                          $tweet.appendTo($container);
-                                                          index -= 1;
-                                                        }
-                                                      
-                                                      });
+                        $nav.children().first().click(screenChange());
       });
       
     </script>
