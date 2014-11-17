@@ -3,6 +3,7 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="jquery.timeago.js"></script>
     <link rel="stylesheet" type"text/css" href="stylesheet.css">
   </head>
   <body>
@@ -30,6 +31,9 @@
           while(index >= 0){
             var tweet = streams.home[index];
             var $tweet = $('<div></div>');
+            var $timeStamp = $('<span></span>');
+            $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
+            $timeStamp.appendTo($container);
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
             $tweet.appendTo($container);
             index -= 1;
@@ -43,6 +47,7 @@
                         
                         function updateTweet () {
                                    setTimeout(function(){
+                                     $container.find('span').first().remove();
                                      $container.find('div').first().remove();
                                      garbage = streams.home.pop();
                                      streams.home.unshift(streams.home[streams.home.length-1]);
@@ -51,14 +56,7 @@
                                      initializeTweet();
                                      },3000);
                         };
-            /*$searchButton.hover(
-                   function(){
-                   $('#menu').children().slideDown(200);
-                   $searchButton.after($nav);
-                   },
-                   function(){
-                   $('#menu').children().slideUp(200);
-                   });*/
+                        
                         $searchButton.click(function(){
                                             $('#menu').children().slideToggle();//slideDown(200);
                                          $searchButton.after($nav);
