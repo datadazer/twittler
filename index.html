@@ -17,14 +17,15 @@
         var garbage;
         var updated = false;
         var $nav = $('<ul id=\'menu\'><li>'+currentUsers[0]+'</li><li>'+currentUsers[1]+'</li><li>'+currentUsers[2]+'</li><li>'+currentUsers[3]+'</li></ul>')
+        var keepUpdating = true;
         $body.html('');
-                        $body.prepend($logo);
+        $body.prepend($logo);
         $container.appendTo($body);
         $container.text('');
-                        $('#logo').text('');
+        $('#logo').text('');
         var $searchButton = $('<div id="searchButton"><div>');
-                        $searchButton.text("Sort By");
-                        $container.after($searchButton);
+        $searchButton.text("Sort By");
+        $container.after($searchButton);
         var index = streams.home.length - 1;
         initializeTweet();
         function initializeTweet() {
@@ -38,14 +39,12 @@
             $tweet.appendTo($container);
             index -= 1;
           }
-                        if(updated == false){
+                        if(updated == false && keepUpdating == true){
                         updateTweet();
                         }
 
         };
-                        //updateTweet();
-                        
-                        function updateTweet () {
+                          function updateTweet () {
                                    setTimeout(function(){
                                      $container.find('span').first().remove();
                                      $container.find('div').first().remove();
@@ -55,12 +54,28 @@
                                      index += 1;
                                      initializeTweet();
                                      },3000);
-                        };
+                          };
                         
                         $searchButton.click(function(){
-                                            $('#menu').children().slideToggle();//slideDown(200);
+                                            $('#menu').children().slideToggle();
                                          $searchButton.after($nav);
                                             });
+                        $nav.children().first().click(function(){
+                                                      keepUpdating = false;
+                                                      index = streams.users.shawndrost.length-1;
+                                                      $container.text('');
+                                                        while(index >= 0){
+                                                          var tweet = streams.users.shawndrost[index];
+                                                          var $tweet = $('<div></div>');
+                                                          var $timeStamp = $('<span></span>');
+                                                          $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
+                                                          $timeStamp.appendTo($container);
+                                                          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+                                                          $tweet.appendTo($container);
+                                                          index -= 1;
+                                                        }
+                                                      
+                                                      });
       });
       
     </script>
