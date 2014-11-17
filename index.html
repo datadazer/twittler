@@ -18,7 +18,7 @@
         var $nav = $('<ul id=\'menu\'><li>'+currentUsers[0]+'</li><li>'+currentUsers[1]+'</li><li>'+currentUsers[2]+'</li><li>'+currentUsers[3]+'</li></ul>')
         var keepUpdating = true;
         var screenPointer = 0;
-        var screenChoices = [streams.home,streams.users.shawndrost]
+        var screenChoices = [streams.home,streams.users.shawndrost,streams.users.sharksforcheap,streams.users.mracus,streams.users.douglascalhoun]
         $body.html('');
         $body.prepend($logo);
         $container.appendTo($body);
@@ -55,7 +55,7 @@
                                      index += 1;
                                      initializeTweet();
                                      },3000);
-                          };
+                          };//end updateTweet
         if(screenPointer != 0){
         function screenChange(pointer){
           keepUpdating = false;
@@ -73,7 +73,7 @@
           }
                         
         };//end screenChange
-                        };
+                        };//end ifstatement
                         
                         $searchButton.click(function(){
                                             $('#menu').children().slideToggle();
@@ -83,6 +83,18 @@
                                                       screenPointer = 1;
                                                       screenChange(screenPointer);
                                                       });
+                        $nav.children().first().next().click(function(){
+                                                             screenPointer = 2;
+                                                             screenChange(screenPointer);
+                                                             });
+                        $nav.children().last().prev().click(function(){
+                                                            screenPointer = 3;
+                                                            screenChange(screenPointer);
+                                                            });
+                        $nav.children().last().click(function(){
+                                                     screenPointer = 4;
+                                                     screenChange(screenPointer);
+                                                     });
       });
       
     </script>
