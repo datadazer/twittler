@@ -8,7 +8,7 @@ body {
 #container {
     position: relative;
     background-color: white;
-    width: 600px;
+    width: 800px;
     margin-top: -200px;
     margin-left: auto;
     margin-right: auto;
@@ -69,4 +69,7 @@ li{
 li:hover{
     background-color: rgba(81, 81, 81, 1);
     cursor: pointer;
+}
+span{
+    float:right;
 }
