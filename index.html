@@ -11,6 +11,7 @@
       $(document).ready(function(){
         var $body = $('body');
         var $container = $('<div id=\'container\'></div>');
+        var $newIndicator = $('<div id="newIndicator"></div>')
         var $logo = $('<div id=\'logo\'></div>');
         var currentUsers = ["@shawndrost","@sharksforcheap","@mracus","@douglascalhoun"];
         var garbage;
@@ -32,12 +33,14 @@
         function initializeTweet() {
           while(index >= 0){
             var tweet = /*streams.home*/screenChoices[screenPointer][index];
-            var $tweet = $('<div></div>');
+            var $tweet = $('<div id="tweet"></div>');
             var $timeStamp = $('<span></span>');
             $timeStamp.text(jQuery.timeago(tweet.created_at)); //make timestamp
             $timeStamp.appendTo($container);
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
             $tweet.appendTo($container);
+            $tweet.prepend($newIndicator);
+            $newIndicator.fadeTo(1000,0)
             index -= 1;
           }
           if(updated == false && keepUpdating == true && screenPointer == 0){
@@ -53,6 +56,7 @@
                                      streams.home.unshift(streams.home[streams.home.length-1]);
                                      garbage = [];
                                      index += 1;
+                                     $newIndicator.css({opacity: 1})
                                      initializeTweet();
                                      },3000);
                           };//end updateTweet
